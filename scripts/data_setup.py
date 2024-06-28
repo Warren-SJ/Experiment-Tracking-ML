@@ -41,7 +41,6 @@ def create_dataloaders(
     test_dataset = ImageFolder(root = test_dir,
                                  transform = test_transform,
                                  target_transform=None)
-    class_names = train_dataset.classes
 
     # Create dataloaders
     train_dataloader = DataLoader(dataset = train_dataset,
@@ -53,4 +52,4 @@ def create_dataloaders(
                                     shuffle = False,
                                     num_workers = num_workers)
     
-    return train_dataloader, test_dataloader, class_names
+    return train_dataloader, test_dataloader
