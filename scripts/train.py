@@ -18,7 +18,7 @@ NUM_WORKERS = 0
 
 data_dir = "data/pizza_steak_sushi"
 
-data_acquisition.acquire_data(dataset = "pizza_steak_sushi",
+data_acquisition.acquire_data(image_path = "pizza_steak_sushi",
                               url = "https://github.com/mrdbourke/pytorch-deep-learning/blob/0fa794be523a10b409a2061e43ae03c419d5ace7/data/pizza_steak_sushi_20_percent.zip?raw=true",
                               zip_name = "pizza_steak_sushi.zip",)
 
@@ -49,6 +49,7 @@ loss_fn = torch.nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
 engine.train(model = model,
+             model_name = MODEL_NAME,
              data_name = "pizza_steak_sushi",
              epochs = NUM_EPOCHS,
              train_dataloader=train_dataloader,

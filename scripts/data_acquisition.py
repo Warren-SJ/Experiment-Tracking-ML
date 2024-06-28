@@ -13,6 +13,8 @@ def acquire_data(image_path: Path,
     zip_name: Name of the zip file to download.
     Returns:
     None"""
+    data_dir = Path("data")
+    image_path = data_dir / image_path
     if image_path.is_dir():
         print("Image directory already exists")
     else:
