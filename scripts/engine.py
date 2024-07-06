@@ -101,16 +101,18 @@ def train(model: nn.Module,
     including training and validation loss and accuracy.
     Args:
         model: The neural network model used for the classifier.
+        model_name: The name of the model.
+        data_name: The name of the dataset. eg: MNIST, CIFAR-10
         epochs: The number of epochs to train the model for.
         train_dataloader: The torch dataloader object for training.
         val_dataloader: The torch dataloader object for validation.
+        device: The device to run the training on. Default is CPU.
         loss_fn: The loss function to be used. Default is CrossEntropyLoss.
         optimizer: The optimizer to be used. Default is Adam.
-        device: The device to run the training on. Default is CPU.
     Returns:
-        A dictionary containing the training history
-        predictions for all validation samples
-        true labels for all validation samples.
+        A dictionary containing the training history.
+        Predictions for all validation samples.
+        True labels for all validation samples.
         A SummaryWriter object for logging the training process.
         """
     writer = create_writer(experiment_name = data_name,
