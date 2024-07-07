@@ -19,10 +19,14 @@ def acquire_data(image_path: Path,
         print("Image directory already exists")
     else:
         image_path.mkdir(parents=True, exist_ok=True)
+        print("Image directory created")
         with open (image_path / zip_name, "wb") as f:
+            print("Downloading zip file")
             request = requests.get(url)
             f.write(request.content)
         with zipfile.ZipFile(image_path / zip_name, "r") as zip_ref:
+            print("Extracting zip file")
             zip_ref.extractall(image_path)
     if os.path.exists(image_path / zip_name):       
         os.remove(image_path / zip_name)
+    print("Done!")
