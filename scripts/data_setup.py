@@ -42,14 +42,16 @@ def create_dataloaders(
                                  transform = test_transform,
                                  target_transform=None)
 
+    class_names = train_dataset.classes
+
     # Create dataloaders
     train_dataloader = DataLoader(dataset = train_dataset,
                                   batch_size = batch_size,
                                   shuffle = True,
                                   num_workers = num_workers)
     test_dataloader = DataLoader(dataset = test_dataset,
-                                    batch_size = batch_size,
-                                    shuffle = False,
-                                    num_workers = num_workers)
+                                 batch_size = batch_size,
+                                 shuffle = False,
+                                 num_workers = num_workers)
     
-    return train_dataloader, test_dataloader
+    return train_dataloader, test_dataloader, class_names
