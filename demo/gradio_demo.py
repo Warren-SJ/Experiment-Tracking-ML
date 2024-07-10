@@ -1,26 +1,13 @@
 import torch
-from torchvision import transforms
-from torchvision import models
-from torch import nn
+from model import EfficientNetb2
 from pathlib import Path
 import gradio as gr
 import time
-import random
 from typing import Tuple, Dict
 class_names = ["pizza", "steak", "sushi"]
 file_dir = Path(__file__).resolve().parent
 test_images = Path(file_dir/"images").rglob("*.jpg")
 
-class EfficientNetb2(nn.Module):
-    def __init__(self, num_classes: int, state_dict_path: Path):
-        super(EfficientNetb2, self).__init__()
-        self.model = models.efficientnet_b2(weights=None)
-        self.transforms = models.EfficientNet_B2_Weights.DEFAULT.transforms()
-        self.model.classifier = nn.Sequential(nn.Dropout(p=0.3, inplace=True),
-                                              nn.Linear(in_features=1408, out_features=num_classes, bias=True))
-        self.model.load_state_dict(torch.load(state_dict_path))
-    def forward(self, x):
-        return self.model(x)
 model = EfficientNetb2(num_classes=len(class_names), state_dict_path="models/efficientnet_b2_new.pth").to("cpu")
 
 
@@ -46,7 +33,7 @@ def main():
                     title = "EfficientNet B2 Image Classifier",
                     description="This is an image classifier which uses an EfficientNet B2 model to classify images of pizza, steak and sushi"
                     )
-    demo.launch()
+    demo.launch(share = False)
 
 if __name__ == "__main__":
     main()
