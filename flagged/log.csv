@@ -1,0 +1,2 @@
+img,Predictions,Prediction time (s),flag,username,timestamp
+flagged\img\b86f176647cd4eefe703\419962.jpg,"{""label"": ""steak"", ""confidences"": [{""label"": ""steak"", ""confidence"": 0.6056851148605347}, {""label"": ""sushi"", ""confidence"": 0.19765567779541016}, {""label"": ""pizza"", ""confidence"": 0.19665920734405518}]}",0.10397148132324219,,,2024-07-10 20:33:54.905546
